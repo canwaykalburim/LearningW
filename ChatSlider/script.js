@@ -38,9 +38,22 @@ var spa = (function ($) {
       return false;
   };
 
-  onClickSlider = function(event) {};
+  onClickSlider = function(event) {
+    toggleSlider();
+    return false;
+  };
 
   initModule = function($container) {
-
+    $container.html(configMap.template_html);
+    $chatSlider = $container.find('.spa-slider');
+    $chatSlider
+      .attr('title', configMap.retracted_title)
+      .Click(onClickSlider);
+    return true;
   };
-}());
+  return {initModule : initModule};
+}(jQuery));
+
+jQuery(document).ready(
+  function() {spa.initModule(jQuery('#spa'));}
+);

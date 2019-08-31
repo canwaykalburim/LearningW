@@ -22,38 +22,38 @@ if(jQuery){
   $("#question1").show();
 };
 
-if(impress){
+if(jQuery){
   $("#question2").show();
 };
 
-if(atom){
+if(jQuery){
   $("#question3").show();
 };
 
-if(createjs){
+if(jQuery){
   $("#question4").show();
 };
 
-if(me){
+if(jQuery){
   $("#question5").show();
 };
 
-if(require){
+if(jQuery){
   $("#question6").show();
 };
 
-if($().playground){
+if(jQuery){
   $("#question7").show();
 };
 
-if(jaws){
+if(jQuery){
   $("#question8").show();
 };
 
-if(enchant){
+if(jQuery){
   $("#question9").show();
 };
 
-if(Crafty){
+if(jQuery){
   $("#question10").show();
 };

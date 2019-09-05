@@ -6,7 +6,7 @@
     <link href="style.css" rel="stylesheet">
   </head>
   <body>
-    <div id="player_inventory" class="itemable">
+    <div id="player_inventory">
       <span class="item-container">
         <h3>인벤토리:</h3>
         <div class="inventory-box empty"></div>
@@ -15,11 +15,12 @@
       </span>
     </div>
     <div id="impress">
-      <div id="1" class="step slide itemable">
+      <div id="slide1" class="step slide">
         <div class="slide-text">
           <p>천재 과학자 태현이는 타임머신을 개발했습니다.<br>타임머신을 가동 하겠습니까?</p>
-          <p><a href="#2">가동한다</a><br>타임머신을 가동했습니다.</p>
-          <p><a href="#3">하지 않는다</a><br>동료인 동현이가 올 때까지 기다립니다.</P>
+          <p><a href="#slide2">가동한다</a><br>타임머신을 가동했습니다.</p>
+          <p><a href="#slide3">하지 않는다</a><br>동료인 동현이가 올 때까지 기다립니다.</P>
+          <div class="event-text"></div>
         </div>
         <div class="menu item-container">
           <div class="inventory-box">
@@ -27,24 +28,27 @@
           </div>
         </div>
       </div>
-      <div id="2" class="step slide itemable" data-x="1500">
+      <div id="slide2" class="step slide" data-x="1500">
         <div class="slide-text">
           <p>아주 먼 과거로 돌아갔습니다.</p>
-          <p>과거의 사람들은 갑자기 나타난 태현이를 신처럼 숭배했습니다.</p>
-          <p>태현이는 기분이 좋아져서 과거 사람들에게 많은 지식을 전파했습니다.</p>
-          <p>만족스럽게 현재로 돌아왔지만, 태현이 때문에 시공간이 일그러지고 말았습니다.</p>
+          <p>과거 사람들과 재미있게 놀고 있었는데 태현이의 타임머신 때문에 시공간이 일그러지고 말았습니다.</p>
+          <p>일그러진 시공간 속에서 몬스터가 출몰했습니다.</p>
+          <div class="event-text"></div>
         </div>
-        <div class="menu"><a href="#1">다시 시작하기</a></div>
+        <div class="menu">
+          <div class="inventory-box">
+            <img src="image/monster.png" alt="monster" class="item" id="monster">
+          </div> 
+        </div>
       </div>
-      <div id="3" class="step slide itemable" data-x="-1500">
+      <div id="slide3" class="step slide" data-x="-1500">
         <div class="slide-text">
           <p>동현이가 돌아올 때까지 기다렸습니다.</p>
           <p>그리고 마침내 동현이가 도착했습니다.</p>
           <p>동현이는 또 쓰레기를 만들었다며 태현이가 만든 타임머신을 부숴버렸습니다.</p>
           <p>태현이는 안타까워 했지만 기계는 이미 부품 조각들로 변해 버렸습니다.</p>
-          <p>타임머신의 힘으로 시공간이 일그러졌습니다.</p>
         </div>
-        <div class="menu"><a href="#1">다시 시작하기</a></div>
+        <div class="menu"><a href="#slide1">다시 시작하기</a></div>
       </div>
       </div>
     </div>

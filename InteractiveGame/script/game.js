@@ -42,24 +42,24 @@ game.things = (function() {
       if(target === 'player_inventory') {
         var effects = itemObject.effects[target];
       }else if(game.slide.getInventory(target)) {
-        var effects = itemObject.effects[game.slide,getInventory(target)];
+        var effects = itemObject.effects[game.slide.getInventory(target)];
       }else {
         var effects = itemObject.effects['empty'];
       };
 
       var targetObject;
-      if(!!effects.object === true){
+      if(!!effects.object === true) {
         if(target === "player_inventory") {
-          targetObject = game.player_inventory;
-        }else{
-          targetObject = gam.slide;
+          targetObject = game.playerInventory;
+        }else {
+          targetObject = game.slide;
         };
         targetObject[effects.object](itemObject);
       };
       if(!!effects.subject === true) {
         if(sourceContext === "player_inventory") {
-          var sourceObject = game.player_inventory;
-        }else{
+          var sourceObject = game.playerInventory;
+        }else {
           var sourceObject = game.slide;
         };
         sourceObject[effects.subject](itemObject);
@@ -123,8 +123,7 @@ game.slide = (function() {
     if(item === null) {
       inventoryBox.innerHTML = "";
       inventoryBox.classList.add("empty");
-    }
-    else{
+    }else {
       inventoryBox.innerHTML = "<img src='"+item+".png' alt='"+item+"' class='item' id='"+item+"'>";
       inventoryBox.classList.remove("empty");
     }
@@ -138,4 +137,63 @@ game.slide = (function() {
     draw: draw,
     currentSlide: currentSlide
   };
+})();
+
+game.playerInventory = (function() {
+  var items = {
+    hammer: false
+  };
+
+  var clearInventory = function() {
+    playerInventoryBoxes = document.querySelectorAll('#player_inventory .inventory-box');
+    [].forEach.call(playerInventoryBoxes, function(inventoryBox) {
+      inventoryBox.classList.add("empty");
+      inventoryBox.innerHTML = "";
+    });
+  };
+
+  var addItem = function(item) {
+    if(this.items[item.name] === false) {
+      this.items[item.name] = true;
+    };
+    return this.items;
+  };
+
+  var deleteItem = function(item) {
+    if(this.items[item.name] === true) {
+      this.items[item.name] = false;
+    };
+    return this.items;
+  };
+
+  var draw = function() {
+    clearInventory();
+    var counter = 0;
+    var inventoryBoxes = document.querySelectorAll('#player_inventory .inventory-box');
+    for(var item in this.items) {
+      if(this.items[item] === true) {
+        inventoryBoxes[counter].classList.remove("empty");
+        inventoryBoxes[counter].innerHTML = "<img src='"+item+".png' alt='"+item+"' class='item' id='"+item+"'>";
+      }
+      counter = counter + 1;
+    };
+  };
+  
+  return {
+    items: items,
+    addItem: addItem,
+    deleteItem: deleteItem,
+    draw: draw
+  };
+})();
+
+game.screen = (function() {
+  var draw = function() {
+    game.playerInventory.draw();
+    game.slide.draw(game.slide.currentSlide());
+  };
+
+  return {
+    draw : draw
+  }
 })();

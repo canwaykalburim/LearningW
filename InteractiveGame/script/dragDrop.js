@@ -21,8 +21,8 @@
   }
   
   function handleDrop(e) {
-    var dragAppLiedTo = this;
-    game.things.dropItemInto(draggingObject, dragAppLiedTo.parentElement.parentElement.id)
+    var dragAppliedTo = this;
+    game.things.dropItemInto(draggingObject, dragAppliedTo.parentElement.parentElement.id)
     e.preventDefault();
   }
 })();
